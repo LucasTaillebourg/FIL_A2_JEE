@@ -1,0 +1,9 @@
+*/.metadata/
+*
+*/.recommenders/
+
+*/.project
+*/.settings/*
+*.idea
+*.iml
+
