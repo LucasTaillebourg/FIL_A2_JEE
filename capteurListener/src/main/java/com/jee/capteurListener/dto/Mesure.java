@@ -17,8 +17,4 @@ public class Mesure {
     private NatureEnum nature;
     private LocalDateTime date;
     private float value;
-
-    private Mesure(){
-        //no-op
-    }
 }

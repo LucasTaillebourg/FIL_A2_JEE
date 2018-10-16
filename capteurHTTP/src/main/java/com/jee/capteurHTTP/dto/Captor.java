@@ -12,8 +12,4 @@ import lombok.Setter;
 public class Captor {
     private Location location;
     private int id;
-
-    private Captor(){
-        //no-op
-    }
 }

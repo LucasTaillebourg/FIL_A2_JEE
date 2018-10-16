@@ -12,8 +12,6 @@ import lombok.Setter;
 public class Location {
     String city;
     String country;
-
-    private Location(){
-        //no-op
-    }
+    String lat;
+    String lon;
 }
