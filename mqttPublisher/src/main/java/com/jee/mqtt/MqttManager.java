@@ -27,8 +27,8 @@ public class MqttManager implements Closeable {
 
 	public MqttManager() throws MqttException {
 		String publisherId = UUID.randomUUID().toString();
-		IMqttClient client = new MqttClient(brokerURL, publisherId);
-		MqttConnectOptions options = new MqttConnectOptions();
+		client = new MqttClient(brokerURL, publisherId);
+		options = new MqttConnectOptions();
 		options.setAutomaticReconnect(true);
 		options.setCleanSession(false);
 		options.setConnectionTimeout(10);
@@ -42,12 +42,15 @@ public class MqttManager implements Closeable {
 	 * @throws MqttSecurityException
 	 */
 	public void sendMesure(Measure measure) throws MqttSecurityException, MqttException {
-
 		client.connect(options);
 		client.publish(TOPIC, formatMessage(measure), QoS, RETAINED);
-
 	}
 
+	/**
+	 * Format mesure to be send Jsonly
+	 * @param measure
+	 * @return
+	 */
 	private static byte[] formatMessage(Measure measure) {
 		MqttMessage message = new MqttMessage();
 		JSONObject measureJson = new JSONObject();
