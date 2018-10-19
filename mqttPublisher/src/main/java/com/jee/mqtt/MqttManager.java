@@ -13,7 +13,7 @@ import org.eclipse.paho.client.mqttv3.MqttSecurityException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jee.dto.Measure;
+import com.jee.capteurMQTT.dto.Measure;
 
 public class MqttManager implements Closeable {
 
