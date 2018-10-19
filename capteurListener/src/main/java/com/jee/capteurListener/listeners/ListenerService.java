@@ -7,14 +7,12 @@ import com.jee.capteurListener.exception.UnknownNatureException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 
 @Service
 public class ListenerService {
 
-    public Mesure toDto(String city, String country, String capteurID, String nature, Date date, String value) throws UnknownNatureException {
-        Location location = Location.builder().city(city).country(country).build();
+    public Mesure toDto(String city, String country, String lat, String lon, String capteurID, String nature, String date, String value) throws UnknownNatureException {
+        Location location = Location.builder().city(city).country(country).lat(lat).lon(lon).build();
 
         NatureEnum natureEnum;
 
@@ -32,10 +30,6 @@ public class ListenerService {
                 throw new UnknownNatureException(nature);
         }
 
-        LocalDateTime localDateTime = date.toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDateTime();
-
-        return Mesure.builder().capteurID(capteurID).date(localDateTime).location(location).nature(natureEnum).value(Float.valueOf(value)).build();
+        return Mesure.builder().capteurID(capteurID).date(LocalDateTime.parse(date)).location(location).nature(natureEnum).value(Float.valueOf(value)).build();
     }
 }
