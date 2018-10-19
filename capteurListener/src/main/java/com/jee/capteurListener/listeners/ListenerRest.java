@@ -1,5 +1,6 @@
 package com.jee.capteurListener.listeners;
 
+import com.jee.capteurListener.dto.Mesure;
 import com.jee.capteurListener.exception.UnknownNatureException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,10 +13,13 @@ public class ListenerRest {
     @Autowired ListenerService listenerService;
 
     @PostMapping("/addMesure")
-    public void addMesure(@RequestParam() String captorCity) throws UnknownNatureException {
+    public void addMesure(@RequestParam() String captorId, @RequestParam() String captorCity,
+                          @RequestParam() String captorCountry, @RequestParam() String captorLat,
+                          @RequestParam() String captorLon, @RequestParam() String mesureDate,
+                          @RequestParam() String mesureValue, @RequestParam() String mesureType) throws UnknownNatureException {
 
-        System.out.println(captorCity);
-        //Mesure mesure = listenerService.toDto(city,country,capteurID,nature,date,value);
+
+        Mesure mesure = listenerService.toDto(captorCity,captorCountry,captorLat, captorLon, captorId, mesureType, mesureDate, mesureValue);
 
         // TODO faire la suite.
     }

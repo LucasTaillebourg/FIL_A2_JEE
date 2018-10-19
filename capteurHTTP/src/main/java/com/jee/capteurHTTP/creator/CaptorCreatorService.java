@@ -11,8 +11,9 @@ public class CaptorCreatorService {
 
     public Captor createCaptor(){
         captorCounter++;
-        Location location = Location.builder().city("Nantes").country("France").build();
+        Location location = Location.builder().city("NTE").country("FR").build();
         return Captor.builder().id(captorCounter).location(location).build();
     }
 
 }
+
