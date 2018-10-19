@@ -1,9 +1,12 @@
-*/.metadata/
-*
-*/.recommenders/
+*.metadata/
 
-*/.project
-*/.settings/*
+*.recommenders/
+
+*.project
+*.settings/
 *.idea
 *.iml
+*/target/
+*/bin/
+*.classpath
 
