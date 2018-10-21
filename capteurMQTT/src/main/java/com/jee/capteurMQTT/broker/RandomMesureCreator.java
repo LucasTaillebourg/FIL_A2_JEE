@@ -11,6 +11,7 @@ public class RandomMesureCreator {
 		Counrty country = new Counrty();
 		country.setId(Locale.FRANCE.toString());
 		
+		
 		return null;
 		
 	}

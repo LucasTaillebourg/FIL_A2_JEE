@@ -1,4 +1,4 @@
-package com.jee.mqtt;
+package com.jee.capteurMQTT.mqtt;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -32,6 +32,10 @@ public class MqttManager implements Closeable {
 		options.setAutomaticReconnect(true);
 		options.setCleanSession(false);
 		options.setConnectionTimeout(10);
+	}
+	
+	public void listenTo(String topic) throws MqttSecurityException, MqttException {
+		client.subscribe(topic);
 	}
 
 	/**

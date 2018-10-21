@@ -3,6 +3,8 @@ package com.jee.capteurMQTT.dto;
 
 import java.time.LocalDateTime;
 
+import com.jee.capteurMQTT.definitions.Nature;
+
 public class Measure {
     private Sensor sensor;
     private Nature nature;

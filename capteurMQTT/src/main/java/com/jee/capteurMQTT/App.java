@@ -18,9 +18,10 @@ public class App
     public static void main( String[] args )
     {
 
-    		//MqttManager mqttManager;
     		try(MqttManager mqttManager = new MqttManager()){// = new MqttManager()
-//    	    	while(true) {
+    	    	while(true) {
+    	    		
+    	    	}
     			//todo envoie de message toutes les 10 sec
     			//mqttManager.sendMesure(RandomMesureCreator.make());
     		}catch(MqttException | IOException ex){
