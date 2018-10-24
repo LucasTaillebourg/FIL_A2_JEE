@@ -16,8 +16,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.jee.capteurMQTT.dto.Measure;
+import com.jee.subscriberBDD.CallbackManager;
 
-public class MqttManager implements Closeable,MqttCallback  {
+public class MqttManager implements Closeable  {
 
 	private MqttClient client;
 	private MqttConnectOptions options;
@@ -39,8 +40,8 @@ public class MqttManager implements Closeable,MqttCallback  {
 	
 	}
 	
-	public void listenTo(String topic) throws MqttSecurityException, MqttException {
-		this.client.setCallback(this);
+	public void listenTo(String topic, CallbackManager callbackManager) throws MqttSecurityException, MqttException {
+		this.client.setCallback(callbackManager);
 		this.client.connect(options);
 		client.subscribe(topic);
 	}
@@ -100,19 +101,5 @@ public class MqttManager implements Closeable,MqttCallback  {
 
 	}
 
-	public void connectionLost(Throwable cause) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void messageArrived(String topic, MqttMessage message) throws Exception {
-		System.out.println("poop");
-		
-	}
-
-	public void deliveryComplete(IMqttDeliveryToken token) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
