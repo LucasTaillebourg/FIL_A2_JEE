@@ -5,7 +5,7 @@
 -- Dumped from database version 10.5
 -- Dumped by pg_dump version 10.5
 
--- Started on 2018-10-24 14:16:06
+-- Started on 2018-10-24 15:48:39
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -56,7 +56,7 @@ SET default_with_oids = false;
 CREATE TABLE "Schema1"."City" (
     id character varying(255) NOT NULL,
     name character varying(189) NOT NULL,
-    "countryId" character varying(255)
+    country_id character varying(255)
 );
 
 
@@ -85,7 +85,7 @@ CREATE TABLE "Schema1"."Measure" (
     nature character varying(100),
     date timestamp without time zone,
     value double precision,
-    "sensorId" bigint
+    sensor_id bigint
 );
 
 
@@ -98,7 +98,7 @@ ALTER TABLE "Schema1"."Measure" OWNER TO postgres;
 
 CREATE TABLE "Schema1"."Sensor" (
     id bigint NOT NULL,
-    "cityId" character varying(255),
+    city_id character varying(255),
     latitude numeric,
     longitude numeric
 );
@@ -112,8 +112,8 @@ ALTER TABLE "Schema1"."Sensor" OWNER TO postgres;
 -- Data for Name: City; Type: TABLE DATA; Schema: Schema1; Owner: postgres
 --
 
-COPY "Schema1"."City" (id, name, "countryId") FROM stdin;
-ParisId	Paris	FR
+COPY "Schema1"."City" (id, name, country_id) FROM stdin;
+ParisId	Zbrarazrharazr	FR
 \.
 
 
@@ -124,7 +124,7 @@ ParisId	Paris	FR
 --
 
 COPY "Schema1"."Country" (id, name) FROM stdin;
-FR	France
+FR	IBRAHIM
 \.
 
 
@@ -134,7 +134,7 @@ FR	France
 -- Data for Name: Measure; Type: TABLE DATA; Schema: Schema1; Owner: postgres
 --
 
-COPY "Schema1"."Measure" (id, nature, date, value, "sensorId") FROM stdin;
+COPY "Schema1"."Measure" (id, nature, date, value, sensor_id) FROM stdin;
 \.
 
 
@@ -144,7 +144,7 @@ COPY "Schema1"."Measure" (id, nature, date, value, "sensorId") FROM stdin;
 -- Data for Name: Sensor; Type: TABLE DATA; Schema: Schema1; Owner: postgres
 --
 
-COPY "Schema1"."Sensor" (id, "cityId", latitude, longitude) FROM stdin;
+COPY "Schema1"."Sensor" (id, city_id, latitude, longitude) FROM stdin;
 15425	ParisId	\N	\N
 \.
 
@@ -186,33 +186,33 @@ ALTER TABLE ONLY "Schema1"."Measure"
 
 
 --
--- TOC entry 2692 (class 2606 OID 16434)
--- Name: Sensor cityIdFK; Type: FK CONSTRAINT; Schema: Schema1; Owner: postgres
+-- TOC entry 2692 (class 2606 OID 16465)
+-- Name: Sensor city_id_FK; Type: FK CONSTRAINT; Schema: Schema1; Owner: postgres
 --
 
 ALTER TABLE ONLY "Schema1"."Sensor"
-    ADD CONSTRAINT "cityIdFK" FOREIGN KEY ("cityId") REFERENCES "Schema1"."City"(id);
+    ADD CONSTRAINT "city_id_FK" FOREIGN KEY (city_id) REFERENCES "Schema1"."City"(id);
 
 
 --
--- TOC entry 2691 (class 2606 OID 16414)
--- Name: City countryIdFK; Type: FK CONSTRAINT; Schema: Schema1; Owner: postgres
+-- TOC entry 2691 (class 2606 OID 16460)
+-- Name: City country_id_FK; Type: FK CONSTRAINT; Schema: Schema1; Owner: postgres
 --
 
 ALTER TABLE ONLY "Schema1"."City"
-    ADD CONSTRAINT "countryIdFK" FOREIGN KEY ("countryId") REFERENCES "Schema1"."Country"(id);
+    ADD CONSTRAINT "country_id_FK" FOREIGN KEY (country_id) REFERENCES "Schema1"."Country"(id);
 
 
 --
--- TOC entry 2693 (class 2606 OID 16444)
--- Name: Measure sensorIdFK; Type: FK CONSTRAINT; Schema: Schema1; Owner: postgres
+-- TOC entry 2693 (class 2606 OID 16470)
+-- Name: Measure sensor_id_FK; Type: FK CONSTRAINT; Schema: Schema1; Owner: postgres
 --
 
 ALTER TABLE ONLY "Schema1"."Measure"
-    ADD CONSTRAINT "sensorIdFK" FOREIGN KEY ("sensorId") REFERENCES "Schema1"."Sensor"(id);
+    ADD CONSTRAINT "sensor_id_FK" FOREIGN KEY (sensor_id) REFERENCES "Schema1"."Sensor"(id);
 
 
--- Completed on 2018-10-24 14:16:08
+-- Completed on 2018-10-24 15:48:39
 
 --
 -- PostgreSQL database dump complete
