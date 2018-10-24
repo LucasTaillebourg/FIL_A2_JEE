@@ -1,4 +1,4 @@
-package bean;
+package com.jee.bean;
 
 public class CounrtyBean {
     private String id;

@@ -1,4 +1,4 @@
-package bean;
+package com.jee.bean;
 
 public class CityBean {
     private String id;

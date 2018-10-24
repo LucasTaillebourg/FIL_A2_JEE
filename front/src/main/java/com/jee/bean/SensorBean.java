@@ -1,4 +1,4 @@
-package bean;
+package com.jee.bean;
 
 public class SensorBean {
     private int id;
