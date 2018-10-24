@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.UUID;
 
 import org.eclipse.paho.client.mqttv3.IMqttClient;
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -15,13 +17,13 @@ import org.json.JSONObject;
 
 import com.jee.capteurMQTT.dto.Measure;
 
-public class MqttManager implements Closeable {
+public class MqttManager implements Closeable,MqttCallback  {
 
 	private MqttClient client;
 	private MqttConnectOptions options;
 
 	final private static String TOPIC = "/mesures";
-	final private static String brokerURL = "tcp://172.17.3.214";
+	final private static String brokerURL = "tcp://172.17.2.15";
 	final private static int QoS = 2;
 	final private static boolean RETAINED = false;
 	final private static int WAIT_TIME = 2000;
@@ -38,6 +40,8 @@ public class MqttManager implements Closeable {
 	}
 	
 	public void listenTo(String topic) throws MqttSecurityException, MqttException {
+		this.client.setCallback(this);
+		this.client.connect(options);
 		client.subscribe(topic);
 	}
 
@@ -94,6 +98,21 @@ public class MqttManager implements Closeable {
 	public void disconnect() throws MqttException {
 		this.client.disconnect();
 
+	}
+
+	public void connectionLost(Throwable cause) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void messageArrived(String topic, MqttMessage message) throws Exception {
+		System.out.println("poop");
+		
+	}
+
+	public void deliveryComplete(IMqttDeliveryToken token) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

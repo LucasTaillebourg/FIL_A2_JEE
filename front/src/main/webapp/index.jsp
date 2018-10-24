@@ -2,9 +2,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>poop</title>
+    <title>Index</title>
   </head>
   <body>
-
+index
   </body>
 </html>

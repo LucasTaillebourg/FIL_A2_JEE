@@ -10,6 +10,6 @@
 */bin/
 *.classpath
 *.lck
-*/Servers
+/Servers
 
 

@@ -23,7 +23,7 @@ public class Sensors {
 	
 	
 	public static Sensor getSensor() {
-		if(it < 6) it++;
+		if(it < 5) it++;
 		else it=0;
 		return sensors.get(it);
 	}

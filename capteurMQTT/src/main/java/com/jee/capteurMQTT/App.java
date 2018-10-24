@@ -17,13 +17,16 @@ public class App {
 	private static int ONE_SEC = 1000;
 
 	public static void main(String[] args) {
-
+		while(true) {
 		try (MqttManager mqttManager = new MqttManager()) {
 			List<Measure> measures;
 			while (true) {
 				measures = RandomMesureCreator.make();
 				for (Measure measure : measures) {
+					
 					mqttManager.sendMesure(measure);
+					
+					
 					System.out.println("Sending : "+measure);
 					Thread.sleep(ONE_SEC);
 					
@@ -37,8 +40,7 @@ public class App {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-
+	}
 	}
 
 }
