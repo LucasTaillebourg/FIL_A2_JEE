@@ -1,0 +1,15 @@
+.without-border-left{
+    border-left: none !important;
+}
+
+.without-border-right{
+    border-left: none;
+}
+
+.with-border-bot{
+    border-bottom: 1px solid #cbcbcb !important;
+}
+
+.body-margin{
+    margin : 10px;
+}
