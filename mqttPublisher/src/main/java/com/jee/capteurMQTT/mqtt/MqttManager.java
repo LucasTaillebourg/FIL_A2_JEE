@@ -64,6 +64,7 @@ public class MqttManager implements Closeable {
 			measureJson.put("nature", measure.getNature());
 			measureJson.put("date", measure.getDate());
 			measureJson.put("sensor", measure.getSensor().getId());
+			measureJson.put("geo", measure.getSensor().getCoordinates());
 			measureJson.put("city", measure.getSensor().getCity().getId());
 			measureJson.put("country", measure.getSensor().getCity().getCountry().getId());
 		} catch (JSONException e) {

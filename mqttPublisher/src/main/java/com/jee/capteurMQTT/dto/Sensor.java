@@ -5,9 +5,10 @@ public class Sensor {
     private City city;
     private GeoCoordinate coordinates;
 
-    public Sensor(int id, City city) {
+    public Sensor(int id, City city, GeoCoordinate coordinates) {
         this.id = id;
         this.city = city;
+        this.coordinates = coordinates;
     }
 
     public Sensor() {
