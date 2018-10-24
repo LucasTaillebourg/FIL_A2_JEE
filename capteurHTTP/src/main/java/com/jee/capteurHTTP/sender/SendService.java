@@ -35,6 +35,8 @@ public class SendService {
         urlParameters.add(new BasicNameValuePair("captorId", Integer.toString(captor.getId())));
         urlParameters.add(new BasicNameValuePair("captorCity", captor.getLocation().getCity()));
         urlParameters.add(new BasicNameValuePair("captorCountry", captor.getLocation().getCountry()));
+        urlParameters.add(new BasicNameValuePair("captorCityId", captor.getLocation().getCityId()));
+        urlParameters.add(new BasicNameValuePair("captorCountryId", captor.getLocation().getCountryId()));
         urlParameters.add(new BasicNameValuePair("captorLat", captor.getLocation().getLat()));
         urlParameters.add(new BasicNameValuePair("captorLon", captor.getLocation().getLon()));
         urlParameters.add(new BasicNameValuePair("mesureDate", mesure.getDate().toString()));

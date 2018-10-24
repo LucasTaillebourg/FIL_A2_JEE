@@ -10,8 +10,10 @@ import lombok.Setter;
 @EqualsAndHashCode
 @Builder
 public class Location {
+    String cityId;
     String city;
     String country;
+    String countryId;
     String lat;
     String lon;
 }
