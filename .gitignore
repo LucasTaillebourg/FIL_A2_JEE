@@ -9,4 +9,6 @@
 */target/
 */bin/
 *.classpath
+*.lck
+
 

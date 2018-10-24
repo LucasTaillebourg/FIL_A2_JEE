@@ -24,19 +24,20 @@ public class App {
 				measures = RandomMesureCreator.make();
 				for (Measure measure : measures) {
 					mqttManager.sendMesure(measure);
+					System.out.println("Sending : "+measure);
 					Thread.sleep(ONE_SEC);
+					
 				}
 				Thread.sleep(ONE_SEC*10);
-
 			}
-			// todo envoie de message toutes les 10 sec
-			// mqttManager.sendMesure(RandomMesureCreator.make());
+		
 		} catch (MqttException | IOException ex) {
-			// todo
+
+			ex.printStackTrace();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 
 	}
 

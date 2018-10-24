@@ -17,13 +17,14 @@ import com.jee.capteurMQTT.dto.Measure;
 
 public class MqttManager implements Closeable {
 
-	private IMqttClient client;
+	private MqttClient client;
 	private MqttConnectOptions options;
 
 	final private static String TOPIC = "/mesures";
-	final private static String brokerURL = "tcp://172.17.2.196";
+	final private static String brokerURL = "tcp://172.17.3.214";
 	final private static int QoS = 2;
 	final private static boolean RETAINED = false;
+	final private static int WAIT_TIME = 2000;
 
 	public MqttManager() throws MqttException {
 		String publisherId = UUID.randomUUID().toString();
@@ -31,7 +32,9 @@ public class MqttManager implements Closeable {
 		options = new MqttConnectOptions();
 		options.setAutomaticReconnect(true);
 		options.setCleanSession(false);
-		options.setConnectionTimeout(10);
+		options.setConnectionTimeout(1);
+		client.setTimeToWait(WAIT_TIME);
+	
 	}
 	
 	public void listenTo(String topic) throws MqttSecurityException, MqttException {
@@ -48,6 +51,8 @@ public class MqttManager implements Closeable {
 	public void sendMesure(Measure measure) throws MqttSecurityException, MqttException {
 		client.connect(options);
 		client.publish(TOPIC, formatMessage(measure), QoS, RETAINED);
+		client.disconnect();
+		
 	}
 
 	/**
@@ -59,7 +64,7 @@ public class MqttManager implements Closeable {
 		MqttMessage message = new MqttMessage();
 		JSONObject measureJson = new JSONObject();
 		try {
-			// TODO mettre a jour le leu de donnés
+			
 			measureJson.put("value", measure.getValue());
 			measureJson.put("nature", measure.getNature());
 			measureJson.put("date", measure.getDate());
@@ -76,7 +81,18 @@ public class MqttManager implements Closeable {
 	}
 
 	public void close() throws IOException {
-		// TODO Auto-generated method stub
+		System.out.println("client is closed");
+		try {
+			this.client.close();
+		} catch (MqttException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void disconnect() throws MqttException {
+		this.client.disconnect();
 
 	}
 
