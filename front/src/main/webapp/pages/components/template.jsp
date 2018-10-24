@@ -1,6 +1,6 @@
 <%@ taglib uri='/WEB-INF/tlds/template.tld' prefix='template' %>
 <html><head><title><template:get name='title'/></title></head>
-
+s
 <table>
    <tr valign='top'><td><template:get name='sidebar'/></td>
       <td><table>

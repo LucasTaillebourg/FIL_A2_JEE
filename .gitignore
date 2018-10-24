@@ -10,5 +10,6 @@
 */bin/
 *.classpath
 *.lck
+*/Servers
 
 
