@@ -1,11 +1,11 @@
 <html>
 <body>
-<table class="pure-table pure-table-horizontal">
-    <tr>
-        <td>Contact</td>
-        <td>A propos</td>
-        <td>CGU</td>
-    </tr>
-</table>
+<div class="pure-menu pure-menu-horizontal menu-header">
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Contact</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">A propos</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">CGU</a></li>
+    </ul>
+</div>
 </body>
 </html>
