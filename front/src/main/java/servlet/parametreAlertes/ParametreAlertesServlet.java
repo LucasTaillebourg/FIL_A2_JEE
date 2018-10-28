@@ -56,18 +56,6 @@ public class ParametreAlertesServlet  extends HttpServlet {
         request.setAttribute("alertesBeans", alerteBeans);
         requestDispatcher = request.getRequestDispatcher("/jsp/pages/parametreAlertesPage.jsp");
 
-        /*int matricule = Integer.parseInt(request.getParameter("matricule"));
-        if(matricule>100 && matricule < 200){
-            EmployeBean employeBean = new EmployeBean(150,"Pierre", "Michel",26);
-            request.setAttribute("employe", employeBean);
-            String tab[] = {"chaine1", "chaine2", "chaine3" , "chaine4"};
-
-            request.setAttribute("employes", tab);
-            requestDispatcher = request.getRequestDispatcher("/jsp/EmployeView.jsp");
-        }else{
-            request.setAttribute("matricule", request.getParameter("matricule"));
-            requestDispatcher = request.getRequestDispatcher("/jsp/EmployeNotFound.jsp");
-        }*/
         requestDispatcher.include(request, reponse) ;
     }
 

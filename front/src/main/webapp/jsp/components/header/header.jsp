@@ -3,11 +3,12 @@
 <body>
 <div class="pure-menu pure-menu-horizontal menu-header">
     <ul class="pure-menu-list">
-        <li class="pure-menu-item pure-menu-link">${param.pageName}</li>
+        <li class="pure-menu-heading">${param.pageName}</li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Item</a></li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Item</a></li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Item</a></li>
-        <li class="pure-menu-item pure-menu-link">nom prenom</li>
+        <!-- TODO mettre à droite-->
+        <li class="pure-menu-heading">nom prenom</li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Deconnexion</a></li>
     </ul>
 </div>
