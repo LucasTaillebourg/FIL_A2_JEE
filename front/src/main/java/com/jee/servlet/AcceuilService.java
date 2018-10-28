@@ -1,4 +1,4 @@
-package servlet;
+package com.jee.servlet;
 
 import java.io.IOException;
 import java.rmi.ServerException;

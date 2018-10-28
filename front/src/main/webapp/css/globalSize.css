@@ -1,0 +1,15 @@
+.header-size{
+    height: 50px !important;
+}
+
+.footer-size{
+    height: 50px !important;
+}
+
+.content-size{
+    min-height: 80%;
+}
+
+.pure-menu-item{
+    height: 50px !important;
+}

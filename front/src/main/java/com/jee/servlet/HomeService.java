@@ -1,4 +1,4 @@
-package servlet;
+package com.jee.servlet;
 
 import com.jee.bean.SensorBean;
 import com.jee.bean.alertes.AlerteBean;
@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.rmi.ServerException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/map")
+@WebServlet("/")
 public class HomeService extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse reponse) throws IOException, ServletException {

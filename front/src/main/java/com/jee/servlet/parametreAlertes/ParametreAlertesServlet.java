@@ -1,4 +1,4 @@
-package servlet.parametreAlertes;
+package com.jee.servlet.parametreAlertes;
 
 import com.jee.bean.alertes.AlerteBean;
 
