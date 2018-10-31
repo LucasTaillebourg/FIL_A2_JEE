@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/")
+@WebServlet("/home")
 public class HomeService extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse reponse) throws IOException, ServletException {
