@@ -5,7 +5,7 @@
 -- Dumped from database version 10.5
 -- Dumped by pg_dump version 10.5
 
--- Started on 2018-10-24 15:48:39
+-- Started on 2018-10-31 13:53:17
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -18,7 +18,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 8 (class 2615 OID 16395)
+-- TOC entry 9 (class 2615 OID 16395)
 -- Name: Schema1; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -36,7 +36,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2826 (class 0 OID 0)
+-- TOC entry 2877 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -44,12 +44,29 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
+--
+-- TOC entry 2 (class 3079 OID 16501)
+-- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
+
+
+--
+-- TOC entry 2878 (class 0 OID 0)
+-- Dependencies: 2
+-- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- TOC entry 198 (class 1259 OID 16406)
+-- TOC entry 199 (class 1259 OID 16406)
 -- Name: City; Type: TABLE; Schema: Schema1; Owner: postgres
 --
 
@@ -63,7 +80,7 @@ CREATE TABLE "Schema1"."City" (
 ALTER TABLE "Schema1"."City" OWNER TO postgres;
 
 --
--- TOC entry 197 (class 1259 OID 16396)
+-- TOC entry 198 (class 1259 OID 16396)
 -- Name: Country; Type: TABLE; Schema: Schema1; Owner: postgres
 --
 
@@ -76,7 +93,7 @@ CREATE TABLE "Schema1"."Country" (
 ALTER TABLE "Schema1"."Country" OWNER TO postgres;
 
 --
--- TOC entry 200 (class 1259 OID 16439)
+-- TOC entry 201 (class 1259 OID 16439)
 -- Name: Measure; Type: TABLE; Schema: Schema1; Owner: postgres
 --
 
@@ -92,7 +109,7 @@ CREATE TABLE "Schema1"."Measure" (
 ALTER TABLE "Schema1"."Measure" OWNER TO postgres;
 
 --
--- TOC entry 199 (class 1259 OID 16429)
+-- TOC entry 200 (class 1259 OID 16429)
 -- Name: Sensor; Type: TABLE; Schema: Schema1; Owner: postgres
 --
 
@@ -107,8 +124,55 @@ CREATE TABLE "Schema1"."Sensor" (
 ALTER TABLE "Schema1"."Sensor" OWNER TO postgres;
 
 --
--- TOC entry 2816 (class 0 OID 16406)
--- Dependencies: 198
+-- TOC entry 203 (class 1259 OID 16490)
+-- Name: Users; Type: TABLE; Schema: Schema1; Owner: postgres
+--
+
+CREATE TABLE "Schema1"."Users" (
+    id integer NOT NULL,
+    email text NOT NULL,
+    password text NOT NULL
+);
+
+
+ALTER TABLE "Schema1"."Users" OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 16488)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: Schema1; Owner: postgres
+--
+
+CREATE SEQUENCE "Schema1".users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Schema1".users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2879 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: Schema1; Owner: postgres
+--
+
+ALTER SEQUENCE "Schema1".users_id_seq OWNED BY "Schema1"."Users".id;
+
+
+--
+-- TOC entry 2727 (class 2604 OID 16493)
+-- Name: Users id; Type: DEFAULT; Schema: Schema1; Owner: postgres
+--
+
+ALTER TABLE ONLY "Schema1"."Users" ALTER COLUMN id SET DEFAULT nextval('"Schema1".users_id_seq'::regclass);
+
+
+--
+-- TOC entry 2865 (class 0 OID 16406)
+-- Dependencies: 199
 -- Data for Name: City; Type: TABLE DATA; Schema: Schema1; Owner: postgres
 --
 
@@ -118,8 +182,8 @@ ParisId	Zbrarazrharazr	FR
 
 
 --
--- TOC entry 2815 (class 0 OID 16396)
--- Dependencies: 197
+-- TOC entry 2864 (class 0 OID 16396)
+-- Dependencies: 198
 -- Data for Name: Country; Type: TABLE DATA; Schema: Schema1; Owner: postgres
 --
 
@@ -129,8 +193,8 @@ FR	IBRAHIM
 
 
 --
--- TOC entry 2818 (class 0 OID 16439)
--- Dependencies: 200
+-- TOC entry 2867 (class 0 OID 16439)
+-- Dependencies: 201
 -- Data for Name: Measure; Type: TABLE DATA; Schema: Schema1; Owner: postgres
 --
 
@@ -139,8 +203,8 @@ COPY "Schema1"."Measure" (id, nature, date, value, sensor_id) FROM stdin;
 
 
 --
--- TOC entry 2817 (class 0 OID 16429)
--- Dependencies: 199
+-- TOC entry 2866 (class 0 OID 16429)
+-- Dependencies: 200
 -- Data for Name: Sensor; Type: TABLE DATA; Schema: Schema1; Owner: postgres
 --
 
@@ -150,7 +214,26 @@ COPY "Schema1"."Sensor" (id, city_id, latitude, longitude) FROM stdin;
 
 
 --
--- TOC entry 2686 (class 2606 OID 16413)
+-- TOC entry 2869 (class 0 OID 16490)
+-- Dependencies: 203
+-- Data for Name: Users; Type: TABLE DATA; Schema: Schema1; Owner: postgres
+--
+
+COPY "Schema1"."Users" (id, email, password) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2880 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: Schema1; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Schema1".users_id_seq', 1, false);
+
+
+--
+-- TOC entry 2731 (class 2606 OID 16413)
 -- Name: City City_pkey; Type: CONSTRAINT; Schema: Schema1; Owner: postgres
 --
 
@@ -159,7 +242,7 @@ ALTER TABLE ONLY "Schema1"."City"
 
 
 --
--- TOC entry 2684 (class 2606 OID 16400)
+-- TOC entry 2729 (class 2606 OID 16400)
 -- Name: Country Country_pkey; Type: CONSTRAINT; Schema: Schema1; Owner: postgres
 --
 
@@ -168,7 +251,7 @@ ALTER TABLE ONLY "Schema1"."Country"
 
 
 --
--- TOC entry 2688 (class 2606 OID 16433)
+-- TOC entry 2733 (class 2606 OID 16433)
 -- Name: Sensor Sensor_pkey; Type: CONSTRAINT; Schema: Schema1; Owner: postgres
 --
 
@@ -177,7 +260,7 @@ ALTER TABLE ONLY "Schema1"."Sensor"
 
 
 --
--- TOC entry 2690 (class 2606 OID 16443)
+-- TOC entry 2735 (class 2606 OID 16443)
 -- Name: Measure measure_pkey; Type: CONSTRAINT; Schema: Schema1; Owner: postgres
 --
 
@@ -186,7 +269,25 @@ ALTER TABLE ONLY "Schema1"."Measure"
 
 
 --
--- TOC entry 2692 (class 2606 OID 16465)
+-- TOC entry 2737 (class 2606 OID 16500)
+-- Name: Users users_email_key; Type: CONSTRAINT; Schema: Schema1; Owner: postgres
+--
+
+ALTER TABLE ONLY "Schema1"."Users"
+    ADD CONSTRAINT users_email_key UNIQUE (email);
+
+
+--
+-- TOC entry 2739 (class 2606 OID 16498)
+-- Name: Users users_pkey; Type: CONSTRAINT; Schema: Schema1; Owner: postgres
+--
+
+ALTER TABLE ONLY "Schema1"."Users"
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2741 (class 2606 OID 16465)
 -- Name: Sensor city_id_FK; Type: FK CONSTRAINT; Schema: Schema1; Owner: postgres
 --
 
@@ -195,7 +296,7 @@ ALTER TABLE ONLY "Schema1"."Sensor"
 
 
 --
--- TOC entry 2691 (class 2606 OID 16460)
+-- TOC entry 2740 (class 2606 OID 16460)
 -- Name: City country_id_FK; Type: FK CONSTRAINT; Schema: Schema1; Owner: postgres
 --
 
@@ -204,7 +305,7 @@ ALTER TABLE ONLY "Schema1"."City"
 
 
 --
--- TOC entry 2693 (class 2606 OID 16470)
+-- TOC entry 2742 (class 2606 OID 16470)
 -- Name: Measure sensor_id_FK; Type: FK CONSTRAINT; Schema: Schema1; Owner: postgres
 --
 
@@ -212,7 +313,7 @@ ALTER TABLE ONLY "Schema1"."Measure"
     ADD CONSTRAINT "sensor_id_FK" FOREIGN KEY (sensor_id) REFERENCES "Schema1"."Sensor"(id);
 
 
--- Completed on 2018-10-24 15:48:39
+-- Completed on 2018-10-31 13:53:18
 
 --
 -- PostgreSQL database dump complete

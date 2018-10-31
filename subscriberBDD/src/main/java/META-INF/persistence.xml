@@ -10,6 +10,7 @@
 		<class>modele.Country</class>
 		<class>modele.Measure</class>
 		<class>modele.Sensor</class>
+		<class>modele.User</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:postgresql://localhost:5432/databaseJEE" />
