@@ -10,7 +10,7 @@ import java.sql.Timestamp;
  * 
  */
 @Entity
-@Table(name="\"Measure\"", schema="\"Schema1\"")
+@Table(name="\"Measure\"", schema="\"public\"")
 @NamedQuery(name="Measure.findAll", query="SELECT m FROM Measure m")
 public class Measure implements Serializable {
 	private static final long serialVersionUID = 1L;

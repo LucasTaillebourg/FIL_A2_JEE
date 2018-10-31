@@ -10,7 +10,7 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="\"City\"", schema="\"Schema1\"")
+@Table(name="\"City\"", schema="\"public\"")
 @NamedQuery(name="City.findAll", query="SELECT c FROM City c")
 public class City implements Serializable {
 	private static final long serialVersionUID = 1L;
