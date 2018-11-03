@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/login")
-public class LoginService extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse reponse) throws IOException, ServletException {
         process(request, reponse);
