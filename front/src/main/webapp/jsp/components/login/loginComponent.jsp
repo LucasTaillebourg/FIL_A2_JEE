@@ -12,22 +12,46 @@
 
 <c:choose>
     <c:when test="${empty error}">
-        <div>Saisisez vos informations de connexion : </div>
+        <div>Saisisez vos informations de connexion :</div>
     </c:when>
     <c:otherwise>
         <div>Les informations saisies précédament sont fausses, veuillez recommencez</div>
     </c:otherwise>
 </c:choose>
 
+<form class="login-form" name="myForm" action="login" method="post">
 
-<form name="myForm" action="login" method="post" >
-    <fieldset>
-        <p>Login : </p>
-        <input type="text" id="login" name="login" placeholder="login"/>
-        <p>Password : </p>
-        <input type="password" id="password" name="password" placeholder="*****"/>
-        <input type="submit" >
-    </fieldset>
+    <div class="login-wrap">
+
+        <p class="login-img"><i class="icon_lock_alt"></i></p>
+        <label for="login">Email</label>
+
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_profile"></i></span>
+                    <input type="text" id="login" name="login" placeholder="login" class="form-control" autofocus>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="input-group">
+                    <span>@veolia.fr</span>
+                </div>
+            </div>
+        </div>
+
+        <label for="password">Mot de passe : </label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+            <input type="password" id="password" name="password" placeholder="*****" class="form-control">
+        </div>
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me"> Enregitrer l'email
+            <!--<span class="pull-right"> <a href="#"> Forgot Password?</a></span>-->
+        </label>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Se Connecter</button>
+
+    </div>
 </form>
 </body>
 </html>
