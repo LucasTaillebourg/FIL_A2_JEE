@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- JPA 2.1 -->
+<!--
+<persistence
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+ -->
+
+<!-- JPA 2.0 -->
+<persistence
+        xmlns="http://java.sun.com/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+        version="2.0">
+
+    <!--
+     For a MAVEN project put this file in "src/main/resources/META-INF"
+     -->
+
+    <persistence-unit name="td" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>com.jee.models.CityEntity</class>
+        <class>com.jee.models.CountryEntity</class>
+        <class>com.jee.models.MeasureEntity</class>
+        <class>com.jee.models.SensorEntity</class>
+        <class>com.jee.models.UsersEntity</class>
+        <properties>
+
+            <!-- JDBC configuration -->
+            <property name="javax.persistence.jdbc.driver"
+                      value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:derby://localhost:1527/databaseJEE"/>
+            <property name="javax.persistence.jdbc.user"
+                      value="postgres"/>
+            <property name="javax.persistence.jdbc.password"
+                      value="1234"/>
+
+            <!-- Hibernate database dialect -->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.PostgreSQL94Dialect"/>
+
+            <!-- Hibernate configuration -->
+            <property name="hibernate.hbm2ddl.auto"       value="none"/>
+            <property name="hibernate.show_sql"           value="true"/>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://192.168.43.71:5432/databaseJEE"/>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

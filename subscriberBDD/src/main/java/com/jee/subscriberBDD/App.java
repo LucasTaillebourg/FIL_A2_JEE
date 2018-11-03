@@ -4,9 +4,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.eclipse.paho.client.mqttv3.MqttException;
+//import org.eclipse.paho.client.mqttv3.MqttException;
 
-import com.jee.capteurMQTT.mqtt.MqttManager;
+//import com.jee.capteurMQTT.mqtt.MqttManager;
 
 import modele.City;
 import modele.Country;
@@ -31,21 +31,21 @@ public class App {
 		
 		User user = new User();
 		em.getTransaction().begin();
-		user.setEmail("aa");
+		/**user.setEmail("aa");
 		user.setPassword("bb");
 		em.getTransaction().commit();
-		
+		*/
 		
 		boolean enMarche = true;
 
 //		while (enMarche) {
-//			Country country = em.find(Country.class, "FR");
-//			City city = country.getCities().get(0);
+			Country country = em.find(Country.class, "FR");
+			City city = country.getCities().get(0);
 //
-//			em.getTransaction().begin();
-//			country.setName("IBRAHIM");
-//			city.setName("Zbrarazrharazr");
-//			em.getTransaction().commit();
+			em.getTransaction().begin();
+			country.setName("IBRAHIM");
+			city.setName("Zbrarazrharazr");
+			em.getTransaction().commit();
 //		}
 
 		em.close();
