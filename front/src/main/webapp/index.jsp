@@ -1,5 +1,6 @@
-<%-- Created by IntelliJ IDEA. --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String redirectURL = request.getContextPath() + "/home";
+     response.sendRedirect(redirectURL);
 
+%>
 
-<p>TODO REDIRIGER / SUR HOME.JSP</p>
