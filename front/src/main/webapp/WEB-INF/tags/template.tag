@@ -46,15 +46,13 @@
 
 <body>
 	<section id="container" class="">
-		<div id="pageheader">
+		
 			<jsp:invoke fragment="header" />
-		</div>
-		<div id="body">
+		
 			<jsp:doBody />
-		</div>
-		<div id="pagefooter">
+	
 			<jsp:invoke fragment="footer" />
-		</div>
+	
 	</section>
 	<!-- javascripts -->
 	<script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
