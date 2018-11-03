@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,20 @@ public class HomeService extends HttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse reponse)
             throws IOException, ServletException {
         RequestDispatcher requestDispatcher;
+
+        //Avant tout on vérifié si on est connecté :
+
+        HttpSession httpSession = request.getSession();
+
+        boolean islogged = httpSession.getAttribute("isLogged") != null;
+
+        if(!islogged){
+            requestDispatcher = getServletContext().getRequestDispatcher("/login");
+            if ( requestDispatcher != null ) {
+                requestDispatcher.forward(request,reponse);
+            }
+        }
+
 
         List<SensorBean> sensorBeans = new ArrayList<>();
         //TODO get la vrai liste des marker
