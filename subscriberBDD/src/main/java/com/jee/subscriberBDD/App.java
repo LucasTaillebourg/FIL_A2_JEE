@@ -1,16 +1,19 @@
 package com.jee.subscriberBDD;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-//import org.eclipse.paho.client.mqttv3.MqttException;
-
-//import com.jee.capteurMQTT.mqtt.MqttManager;
-
-import modele.City;
-import modele.Country;
-import modele.User;
+import com.jee.subscriberBDD.modele.City;
+import com.jee.subscriberBDD.modele.Country;
+import com.jee.subscriberBDD.modele.Measure;
+import com.jee.subscriberBDD.modele.Sensor;
+import com.jee.subscriberBDD.modele.User;
+import com.jee.subscriberBDD.utils.BDDSenderUtil;
 
 public class App {
 	public static void main(String[] args) {
@@ -25,31 +28,26 @@ public class App {
 //		}
 		
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("subscriberBDD");
-
-		EntityManager em = emf.createEntityManager();
+		Measure measure = new Measure();
+		measure.setDate(Timestamp.valueOf(LocalDateTime.now()));
+		measure.setNature("ATHMOSPHERIQUE");
+		measure.setValue(1.25);
+		Sensor sensor = new Sensor();
+		sensor.setId(new Long("98"));
+		sensor.setLatitude(new BigDecimal("15151515"));
+		sensor.setLongitude(new BigDecimal("115"));
+		City city  = new City();
+		city.setId("PR");
+		city.setName("Prout");
+		Country country =new Country();
+		country.setId("dedede");
+		country.setName("aaaaa");
+		city.setCountry(country);
+		sensor.setCity(city);
+		measure.setSensor(sensor);
+		measure.setSensor(sensor);
 		
-		User user = new User();
-		em.getTransaction().begin();
-		/**user.setEmail("aa");
-		user.setPassword("bb");
-		em.getTransaction().commit();
-		*/
-		
-		boolean enMarche = true;
-
-//		while (enMarche) {
-			Country country = em.find(Country.class, "FR");
-			City city = country.getCities().get(0);
-//
-			em.getTransaction().begin();
-			country.setName("IBRAHIM");
-			city.setName("Zbrarazrharazr");
-			em.getTransaction().commit();
-//		}
-
-		em.close();
-		emf.close();
+		BDDSenderUtil.sendMeasureToDatabase(measure);
 		
 	}
 }

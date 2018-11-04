@@ -1,4 +1,4 @@
-package modele;
+package com.jee.subscriberBDD.modele;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -16,7 +16,9 @@ public class Measure implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String id;
+	@SequenceGenerator(name="MEASURE_ID_GENERATOR", sequenceName="MEASURE_SEQ", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MEASURE_ID_GENERATOR")
+	private int id;
 
 	private Timestamp date;
 
@@ -31,11 +33,11 @@ public class Measure implements Serializable {
 	public Measure() {
 	}
 
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

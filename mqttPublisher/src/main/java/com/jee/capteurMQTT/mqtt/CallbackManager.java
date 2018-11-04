@@ -1,4 +1,4 @@
-package com.jee.subscriberBDD;
+package com.jee.capteurMQTT.mqtt;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;

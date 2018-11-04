@@ -6,11 +6,11 @@
 	<persistence-unit name="subscriberBDD"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<class>modele.City</class>
-		<class>modele.Country</class>
-		<class>modele.Measure</class>
-		<class>modele.Sensor</class>
-		<class>modele.User</class>
+		<class>com.jee.subscriberBDD.modele.City</class>
+		<class>com.jee.subscriberBDD.modele.Country</class>
+		<class>com.jee.subscriberBDD.modele.Measure</class>
+		<class>com.jee.subscriberBDD.modele.Sensor</class>
+		<class>com.jee.subscriberBDD.modele.User</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:postgresql://localhost:5432/databaseJEE" />

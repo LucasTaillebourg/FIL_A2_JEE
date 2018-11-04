@@ -16,7 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.jee.capteurMQTT.dto.Measure;
-import com.jee.subscriberBDD.CallbackManager;
 
 public class MqttManager implements Closeable  {
 

@@ -1,4 +1,4 @@
-package modele;
+package com.jee.subscriberBDD.modele;
 
 import java.io.Serializable;
 
