@@ -23,7 +23,7 @@ public class MqttManager implements Closeable  {
 	private MqttConnectOptions options;
 
 	final private static String TOPIC = "/mesures";
-	final private static String brokerURL = "tcp://172.17.2.15";
+	final private static String brokerURL = "tcp://192.168.1.16";
 	final private static int QoS = 2;
 	final private static boolean RETAINED = false;
 	final private static int WAIT_TIME = 2000;
@@ -39,8 +39,7 @@ public class MqttManager implements Closeable  {
 	
 	}
 	
-	public void listenTo(String topic, CallbackManager callbackManager) throws MqttSecurityException, MqttException {
-		this.client.setCallback(callbackManager);
+	public void listenTo(String topic) throws MqttSecurityException, MqttException {
 		this.client.connect(options);
 		client.subscribe(topic);
 	}
@@ -72,10 +71,13 @@ public class MqttManager implements Closeable  {
 			measureJson.put("value", measure.getValue());
 			measureJson.put("nature", measure.getNature());
 			measureJson.put("date", measure.getDate());
-			measureJson.put("sensor", measure.getSensor().getId());
-			measureJson.put("geo", measure.getSensor().getCoordinates());
-			measureJson.put("city", measure.getSensor().getCity().getId());
-			measureJson.put("country", measure.getSensor().getCity().getCountry().getId());
+			measureJson.put("sensorId", measure.getSensor().getId());
+			measureJson.put("lon", measure.getSensor().getCoordinates().getLongitude());
+			measureJson.put("lat", measure.getSensor().getCoordinates().getLatitude());
+			measureJson.put("cityId", measure.getSensor().getCity().getId());
+			measureJson.put("cityName", measure.getSensor().getCity().getName());
+			measureJson.put("countryId", measure.getSensor().getCity().getCountry().getId());
+			measureJson.put("countryName", measure.getSensor().getCity().getCountry().getName());
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -98,6 +100,10 @@ public class MqttManager implements Closeable  {
 	public void disconnect() throws MqttException {
 		this.client.disconnect();
 
+	}
+	
+	public MqttClient getClient() {
+		return this.client;
 	}
 
 
