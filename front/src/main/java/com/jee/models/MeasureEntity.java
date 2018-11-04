@@ -7,20 +7,24 @@ import java.util.Objects;
 @Entity
 @Table(name = "Measure", schema = "public", catalog = "databaseJEE")
 public class MeasureEntity {
-    private String id;
+	@Id
+	@SequenceGenerator(name="MEASURE_ID_GENERATOR", sequenceName="MEASURE_SEQ", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MEASURE_ID_GENERATOR")
+	private int id;
+	
     private String nature;
     private Timestamp date;
     private Double value;
     private Long sensorId;
     private SensorEntity sensorBySensorId;
 
-    @Id
+    
     @Column(name = "id")
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
