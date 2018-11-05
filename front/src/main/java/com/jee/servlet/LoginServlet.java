@@ -1,7 +1,8 @@
-package com.jee.servlet.login;
+package com.jee.servlet;
 
 import com.jee.bean.SensorBean;
 import com.jee.bean.alertes.AlerteBean;
+import com.jee.services.LoggerService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,15 +33,7 @@ public class LoginServlet extends HttpServlet {
         //si on est dejà loggé on va sur /home
         HttpSession httpSession = request.getSession();
 
-        boolean islogged = httpSession.getAttribute("isLogged") != null;
-
-        if(islogged){
-            requestDispatcher = getServletContext().getRequestDispatcher("/home");
-            if ( requestDispatcher != null ) {
-                requestDispatcher.forward(request,reponse);
-            }
-        }
-
+        LoggerService.verifyAlreadyLog(request, reponse, getServletContext());
 
         String login = request.getParameter( "login" );
         String password = request.getParameter( "password" );

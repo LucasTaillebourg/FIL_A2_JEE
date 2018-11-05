@@ -2,6 +2,7 @@ package com.jee.servlet;
 
 import com.jee.bean.SensorBean;
 import com.jee.bean.alertes.AlerteBean;
+import com.jee.services.LoggerService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,15 +34,7 @@ public class HomeService extends HttpServlet {
 
         HttpSession httpSession = request.getSession();
 
-        boolean islogged = httpSession.getAttribute("isLogged") != null;
-
-        if(!islogged){
-            requestDispatcher = getServletContext().getRequestDispatcher("/login");
-            if ( requestDispatcher != null ) {
-                requestDispatcher.forward(request,reponse);
-            }
-        }
-
+        LoggerService.verifyLogState(request, reponse, getServletContext());
 
         List<SensorBean> sensorBeans = new ArrayList<>();
         //TODO get la vrai liste des marker
