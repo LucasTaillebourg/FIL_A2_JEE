@@ -1,7 +1,7 @@
 package com.jee.services;
 
 import com.jee.bean.alertes.AlerteBean;
-import com.jee.models.MeasureEntity;
+import com.jee.models.Measure;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,24 +11,32 @@ import java.util.Map;
 public class AlertesService {
 
 
-    public static Map<MeasureEntity, String> getAlertes(List<AlerteBean> paramsAlertes, List<MeasureEntity> mesures){
-        Map<MeasureEntity, String> alertes = new HashMap<>();
+    public static Map<Measure, String> getAlertes(List<AlerteBean> paramsAlertes, List<Measure> mesures){
+        Map<Measure, String> alertes = new HashMap<>();
         paramsAlertes.forEach(alerteBean -> alertes.putAll(AlertesService.getAlertesForParam(alerteBean, mesures)));
 
         return alertes;
     }
 
-    private static Map<MeasureEntity, String> getAlertesForParam(AlerteBean param, List<MeasureEntity> mesures){
-        Map<MeasureEntity, String> alertes = new HashMap<>();
+    private static Map<Measure, String> getAlertesForParam(AlerteBean param, List<Measure> mesures){
+        Map<Measure, String> alertes = new HashMap<>();
 
         mesures.forEach(measureEntity -> AlertesService.addMeasureIfRespectParam(alertes, param, measureEntity));
 
         return alertes;
     }
 
-    private static void addMeasureIfRespectParam(Map<MeasureEntity, String> alertes, AlerteBean param, MeasureEntity mesures){
-        if(mesures.getNature().equals(param.getType())){
-            
+    private static void addMeasureIfRespectParam(Map<Measure, String> alertes, AlerteBean param, Measure mesure){
+        if(mesure.getNature().equals(param.getType())){
+            switch (param.getOperator()){
+                case "<" :
+                    if(mesure.getValue() < Double.valueOf(param.getSeuil())) alertes.put(mesure, param.getGravite());
+                    break;
+                case ">" :
+                    if(mesure.getValue() > Double.valueOf(param.getSeuil())) alertes.put(mesure, param.getGravite());
+                    break;
+                default: //do-nothing
+            }
         }
     }
 }

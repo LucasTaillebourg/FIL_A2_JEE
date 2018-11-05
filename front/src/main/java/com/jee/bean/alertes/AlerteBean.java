@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 
 public class AlerteBean {
 
-    String intitule;
-    String type;
-    String seuil;
-    String operator;
-    String gravite;
+    private String intitule;
+    private String type;
+    private String seuil;
+    private String operator;
+    private String gravite;
     
     
     
