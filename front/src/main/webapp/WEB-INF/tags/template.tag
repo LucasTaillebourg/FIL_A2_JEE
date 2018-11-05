@@ -5,14 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-          content="Creative - Bootstrap 3 Responsive Admin Template">
-    <meta name="author" content="GeeksLabs">
+          content="projet Jee">
+    <meta name="author" content="filA2">
     <meta name="keyword"
-          content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+          content="poop">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Elements | Creative - Bootstrap 3 Responsive Admin
-        Template</title>
+    <title>Veolia - Consultation de capteurs</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -43,7 +42,7 @@
 </head>
 <header>
     <jsp:include page="../../jsp/components/header/header.jsp">
-        <jsp:param name="pageName" value="Page des paramêtres des alertes"/>
+        <jsp:param name="pageName" value="Page des parametres des alertes"/>
     </jsp:include>
 </header>
 

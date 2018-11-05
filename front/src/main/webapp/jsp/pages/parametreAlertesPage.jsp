@@ -1,11 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<jsp:include page="../css/css.jsp"/>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
-<jsp:include page="../components/header/header.jsp">
-    <jsp:param name="pageName" value="Page des paramêtres des alertes"/>
-</jsp:include>
+<t:template>
 
-<jsp:include page="../components/tableauParamAlerte/TableauParamAlerte.jsp"/>
+	<jsp:body>
+      <jsp:include page="../components/tableauParamAlerte/TableauParamAlerte.jsp"/>
 
-<jsp:include page="../components/footer/footer.jsp"/>
+    </jsp:body>
+</t:template>
+
+
+
+

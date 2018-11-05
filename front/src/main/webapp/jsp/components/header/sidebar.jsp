@@ -1,7 +1,8 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String urlFlags = request.getContextPath() + "/flags";
     String urlHistoric = request.getContextPath() + "/historic";
-    String urlConf = request.getContextPath() + "/conf";
+    String urlConf = request.getContextPath() + "/parametreAlertes";
 
 
 %>
@@ -22,7 +23,7 @@
             <li class="active">
                 <a class="" href="<%=urlHistoric%>">
                     <i class="icon_documents_alt"></i>
-                    <span>historique</span>
+                    <span>Historique</span>
                 </a>
             </li>
 

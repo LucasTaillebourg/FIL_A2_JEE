@@ -1,4 +1,4 @@
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <li id="alert_notificatoin_bar" class="dropdown"><a
 	data-toggle="dropdown" class="dropdown-toggle" href="#"> <i
 		class="icon-bell-l"></i> <span class="badge bg-important">7</span>

@@ -7,10 +7,10 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
+							<th>Gravitée</th>
+							<th><i class="icon_calendar"></i> Date</th>
+							<th><i class="icon_pin_alt"></i> Capteur</th>
+							<th>Alerte</th>
 
 						</tr>
 					</thead>
@@ -18,15 +18,13 @@
 
 						<c:forEach items="${warnings}" var="warning">
 							<tr>
-								<td> ${warning.alerte.gravite}</td>
+								<td>${warning.alerte.gravite}</td>
 								<td>${warning.mesure.dateToString}</td>
-								<td>${warning.mesure.sensor.city} - ${warning.mesure.sensor.id}</td>
-								<td> ${warning.mesure.nature}${warning.alerte.operator} ${warning.mesure.value}</td>
-						
-					
-
+								<td>${warning.mesure.sensor.city}-
+									${warning.mesure.sensor.id}</td>
+								<td>${warning.mesure.nature}${warning.alerte.operator}
+									${warning.mesure.value}</td>
 							</tr>
-
 						</c:forEach>
 
 

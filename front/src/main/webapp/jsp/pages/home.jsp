@@ -6,6 +6,7 @@
 	<jsp:body>
         <jsp:include page="../components/home/recapAlerte.jsp" />
         <jsp:include page="../components/home/mapCapteur.jsp" />
+        <jsp:include page="../components/home/graph.jsp" />
 
     </jsp:body>
 </t:template>
