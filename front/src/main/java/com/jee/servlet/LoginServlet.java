@@ -2,6 +2,7 @@ package com.jee.servlet;
 
 import com.jee.bean.SensorBean;
 import com.jee.bean.alertes.AlerteBean;
+import com.jee.models.User;
 import com.jee.services.LoggerService;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 @WebServlet("/login")
@@ -43,9 +46,21 @@ public class LoginServlet extends HttpServlet {
             requestDispatcher = request.getRequestDispatcher("/jsp/pages/login.jsp");
             requestDispatcher.include(request, reponse) ;
         }else{
-            boolean isLogged = true; // TODO bdd
-            //TODO vérifier dans la bdd que le mot de passe correspond à l'utilisateur, flemme de crypter :')
+            boolean isLogged = false;
 
+            User user = new User();
+            user.setEmail(login);
+            user.setPassword(password);
+            
+            Collection users = user.findPassWordByEmail(user.getEmail());
+            Iterator it = users.iterator();
+            while (it.hasNext()) {
+            	String passwordDb =  (String) it.next();
+            	if (passwordDb.equals(user.getPassword())) {
+            		isLogged = true;
+            		break;
+            	}
+            }
             if(isLogged){
                 requestDispatcher = getServletContext().getRequestDispatcher("/home");
 

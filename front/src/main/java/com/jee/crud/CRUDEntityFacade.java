@@ -15,7 +15,7 @@ import java.util.Map;
 public class CRUDEntityFacade<T> implements IEntityFacade<T> {
 
     private static final EntityManagerFactory emf = Persistence
-            .createEntityManagerFactory("databaseJEE");
+            .createEntityManagerFactory("front");
 
     /**
      * Insert object
@@ -144,10 +144,11 @@ public class CRUDEntityFacade<T> implements IEntityFacade<T> {
     public Collection customSearch(String queryString, Map<String, T> queryParameters) {
         EntityManager em = emf.createEntityManager();
         List entities = null;
-
+       
         try {
             System.out.println("Custom Search started");
             Query query = em.createQuery(queryString);
+            System.out.println(query);
             if(queryParameters != null && !queryParameters.isEmpty()) {
                 for(Map.Entry<String, T> entry : queryParameters.entrySet()) {
                     query.setParameter(entry.getKey(), entry.getValue());
