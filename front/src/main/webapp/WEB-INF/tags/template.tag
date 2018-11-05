@@ -50,7 +50,7 @@
 <body>
 
     <section id="container" class="">
-        <!--<jsp:include page="../../jsp/components/header/sidebar.jsp"></jsp:include>-->
+        <jsp:include page="../../jsp/components/header/sidebar.jsp"></jsp:include>
         <section id="main-content">
             <section class="wrapper">
                 <jsp:doBody/>

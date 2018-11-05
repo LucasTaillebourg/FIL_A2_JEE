@@ -1,16 +1,36 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: taillebourg
-  Date: 28/10/18
-  Time: 10:23
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+<div class="row">
+	<div class="col-lg-12">
+		<section class="panel">
+			<header class="panel-heading"> Alertes </header>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th></th>
+							<th> </th>
+							<th> </th>
+						
+						</tr>
+					</thead>
+					<tbody>
+
+						<c:forEach items="${alertesThrown}" var="alerte">
+							<tr>
+							
+							<td><i class="icon-bell-l"></i> ${alerte.gravite}</td>
+							<td>${alerte.mesure.date}</td>
+							<td>${alerte.mesure.nature} ${alerte.operator} ${alerte.mesure.value}</td>
+						
+						</tr>
+
+						</c:forEach>
+					
+
+					</tbody>
+				</table>
+			</div>
+
+		</section>
+	</div>
+</div>

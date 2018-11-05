@@ -1,7 +1,9 @@
 package com.jee.servlet;
 
 import com.jee.bean.SensorBean;
+import com.jee.bean.alertes.AlertThrown;
 import com.jee.bean.alertes.AlerteBean;
+//import com.jee.services.LoggerService;
 import com.jee.services.LoggerService;
 
 import javax.servlet.RequestDispatcher;
@@ -74,9 +76,15 @@ public class HomeService extends HttpServlet {
         mapApiUrl.append("&key=AIzaSyAi63CLYJ_yEODZcRLLvWyixDMDmEougdA"); // Ma clé perso, ne pas réutiliser - Lucas
 
 
-        List<AlerteBean> alerteBeans = new ArrayList<>();
+       
+        List<AlerteBean> alerteConf = new ArrayList<>();
+        List<AlertThrown> alertesThrown = new ArrayList<>();
 
         //TODO Rediriger connexion toussa toussa
+
+       
+        request.setAttribute("alertesConf", alerteConf);
+        request.setAttribute("alertesThrown", alertesThrown);
 
         request.setAttribute("mapKey", mapApiUrl);
         requestDispatcher = request.getRequestDispatcher("/jsp/pages/home.jsp");

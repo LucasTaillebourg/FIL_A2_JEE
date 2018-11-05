@@ -25,7 +25,7 @@
 			<!-- user login dropdown start-->
 			<jsp:include page="login-dropdown.jsp" />
 			<!-- user login dropdown end -->
-			<li><a href="login.html"><i class="icon_key_alt"></i> Deconnexion</a> </li>
+			<li><a href="<%=request.getContextPath()%>/logout"><i class="icon_key_alt"></i> Deconnexion</a> </li>
 		</ul>
 		<!-- notificatoin dropdown end-->
 	</div>

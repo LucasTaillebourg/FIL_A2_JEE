@@ -1,12 +1,15 @@
 package com.jee.bean.alertes;
 
+import java.time.LocalDateTime;
+
 public class AlerteBean {
 
     String intitule;
     String type;
     String seuil;
+    String operator;
     String gravite;
-
+    
     public String getIntitule() {
         return intitule;
     }
@@ -38,4 +41,8 @@ public class AlerteBean {
     public void setGravite(String gravite) {
         this.gravite = gravite;
     }
+
+
+    
+    
 }
