@@ -1,12 +1,14 @@
 package com.jee.bean;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MeasureBean {
     private SensorBean sensor;
     private Nature nature;
     private Float value;
     private LocalDateTime date;
+
 
     public MeasureBean(SensorBean sensor, Nature nature, Float value, LocalDateTime date) {
         this.sensor = sensor;
@@ -44,6 +46,11 @@ public class MeasureBean {
 
     public LocalDateTime getDate() {
         return date;
+    }
+    public String getDateToString() {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyy HH:mm:ss");
+        return date.format(formatter);
     }
 
     public void setDate(LocalDateTime date) {

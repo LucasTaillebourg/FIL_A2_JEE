@@ -10,7 +10,22 @@ public class AlerteBean {
     String operator;
     String gravite;
     
-    public String getIntitule() {
+    
+    
+    public AlerteBean(String intitule, String type, String seuil, String operator, String gravite) {
+		super();
+		this.intitule = intitule;
+		this.type = type;
+		this.seuil = seuil;
+		this.operator = operator;
+		this.gravite = gravite;
+	}
+
+	public AlerteBean() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getIntitule() {
         return intitule;
     }
 
@@ -41,6 +56,16 @@ public class AlerteBean {
     public void setGravite(String gravite) {
         this.gravite = gravite;
     }
+
+	public String getOperator() {
+		return operator;
+	}
+
+	public void setOperator(String operator) {
+		this.operator = operator;
+	}
+    
+    
 
 
     

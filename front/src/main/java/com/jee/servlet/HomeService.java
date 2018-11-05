@@ -1,8 +1,12 @@
 package com.jee.servlet;
 
+import com.jee.bean.CityBean;
+import com.jee.bean.MeasureBean;
+import com.jee.bean.Nature;
 import com.jee.bean.SensorBean;
-import com.jee.bean.alertes.AlertThrown;
 import com.jee.bean.alertes.AlerteBean;
+import com.jee.bean.alertes.Warnings;
+
 //import com.jee.services.LoggerService;
 import com.jee.services.LoggerService;
 
@@ -14,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,15 +81,19 @@ public class HomeService extends HttpServlet {
         mapApiUrl.append("&key=AIzaSyAi63CLYJ_yEODZcRLLvWyixDMDmEougdA"); // Ma clé perso, ne pas réutiliser - Lucas
 
 
-       
+       //todo fetch dans la table
         List<AlerteBean> alerteConf = new ArrayList<>();
-        List<AlertThrown> alertesThrown = new ArrayList<>();
-
+        List<Warnings> warnings = new ArrayList<>();
+        CityBean city = new CityBean("NTE","Nantes",null);
+        new SensorBean(1,city);
+        warnings.add(new Warnings(new AlerteBean("temp max","temps","30", ">", "grave"), new MeasureBean(null,Nature.TEMPERATURE, (float) 30.5, LocalDateTime.now())));
+        warnings.add(new Warnings(new AlerteBean("temp max","temps","50", ">", "grave"), new MeasureBean(null,Nature.TEMPERATURE, (float) 30.5, LocalDateTime.now())));
+        
         //TODO Rediriger connexion toussa toussa
 
        
         request.setAttribute("alertesConf", alerteConf);
-        request.setAttribute("alertesThrown", alertesThrown);
+        request.setAttribute("warnings", warnings);
 
         request.setAttribute("mapKey", mapApiUrl);
         requestDispatcher = request.getRequestDispatcher("/jsp/pages/home.jsp");
