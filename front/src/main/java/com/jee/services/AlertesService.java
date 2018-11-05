@@ -1,39 +1,38 @@
 package com.jee.services;
 
+import com.jee.bean.MeasureBean;
 import com.jee.bean.alertes.AlerteBean;
-import com.jee.models.Measure;
+import com.jee.bean.alertes.Warnings;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AlertesService {
 
 
-    public static Map<Measure, String> getAlertes(List<AlerteBean> paramsAlertes, List<Measure> mesures){
-        Map<Measure, String> alertes = new HashMap<>();
-        paramsAlertes.forEach(alerteBean -> alertes.putAll(AlertesService.getAlertesForParam(alerteBean, mesures)));
+    public static List<Warnings> getAlertes(List<AlerteBean> paramsAlertes, List<MeasureBean> mesures){
+        List<Warnings> alertes = new ArrayList<>();
+        paramsAlertes.forEach(alerteBean -> alertes.addAll(AlertesService.getAlertesForParam(alerteBean, mesures)));
 
         return alertes;
     }
 
-    private static Map<Measure, String> getAlertesForParam(AlerteBean param, List<Measure> mesures){
-        Map<Measure, String> alertes = new HashMap<>();
+    private static List<Warnings> getAlertesForParam(AlerteBean param, List<MeasureBean> mesures){
+        List<Warnings> alertes = new ArrayList<>();
 
         mesures.forEach(measureEntity -> AlertesService.addMeasureIfRespectParam(alertes, param, measureEntity));
 
         return alertes;
     }
 
-    private static void addMeasureIfRespectParam(Map<Measure, String> alertes, AlerteBean param, Measure mesure){
-        if(mesure.getNature().equals(param.getType())){
+    private static void addMeasureIfRespectParam(List<Warnings> alertes, AlerteBean param, MeasureBean mesure){
+        if(mesure.getNature().toString().equals(param.getType())){
             switch (param.getOperator()){
                 case "<" :
-                    if(mesure.getValue() < Double.valueOf(param.getSeuil())) alertes.put(mesure, param.getGravite());
+                    if(mesure.getValue() < Double.valueOf(param.getSeuil())) alertes.add(new Warnings(param, mesure));
                     break;
                 case ">" :
-                    if(mesure.getValue() > Double.valueOf(param.getSeuil())) alertes.put(mesure, param.getGravite());
+                    if(mesure.getValue() > Double.valueOf(param.getSeuil())) alertes.add(new Warnings(param, mesure));
                     break;
                 default: //do-nothing
             }
