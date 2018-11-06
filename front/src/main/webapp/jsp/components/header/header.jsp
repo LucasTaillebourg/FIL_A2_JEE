@@ -11,7 +11,7 @@
 	</div>
 
 	<!--logo start-->
-	<a href="index.html" class="logo"><span class="lite">${param.pageName}</span></a>
+	<a href="<%=request.getContextPath()%>/home" class="logo"><span class="lite">${param.pageName}</span></a>
 	<!--logo end-->
 
 
