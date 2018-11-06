@@ -23,7 +23,7 @@ public class MqttManager implements Closeable  {
 	private MqttConnectOptions options;
 
 	final private static String TOPIC = "/mesures";
-	final private static String brokerURL = "tcp://192.168.1.16";
+	final private static String brokerURL = "tcp://172.17.2.34";
 	final private static int QoS = 2;
 	final private static boolean RETAINED = false;
 	final private static int WAIT_TIME = 2000;

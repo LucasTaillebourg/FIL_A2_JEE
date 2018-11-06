@@ -1,5 +1,7 @@
 package com.jee.bean;
 
+import com.jee.models.Sensor;
+
 public class SensorBean {
     private int id;
     private CityBean city;
@@ -9,6 +11,14 @@ public class SensorBean {
     public SensorBean(int id, CityBean city) {
         this.id = id;
         this.city = city;
+    }
+    
+    public SensorBean(Sensor sensor) {
+    	this.id = sensor.getId().intValue();
+    	this.city = new CityBean(sensor.getCity());
+    	this.lon = sensor.getLongitude().floatValue();
+    	this.lat = sensor.getLatitude().floatValue();
+    	   	
     }
 
     public SensorBean() {

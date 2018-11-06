@@ -63,6 +63,7 @@ ALTER TABLE public.alertes_seq OWNER TO postgres;
 CREATE TABLE public."Alertes" (
     id bigint DEFAULT nextval('public.alertes_seq'::regclass) NOT NULL,
     intitule character varying(255),
+    type character varying(255),
     seuil character varying(255),
     operande character varying(255),
     gravite character varying(255)

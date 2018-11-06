@@ -1,5 +1,7 @@
 package com.jee.bean;
 
+import com.jee.models.City;
+
 public class CityBean {
     private String id;
     private String name;
@@ -9,6 +11,12 @@ public class CityBean {
         this.id = id;
         this.name = name;
         this.country = country;
+    }
+    
+    public CityBean(City city) {
+    	this.id = city.getId();
+    	this.name = city.getName();
+    	this.country = new CounrtyBean(city.getCountry());
     }
 
     public CityBean() {

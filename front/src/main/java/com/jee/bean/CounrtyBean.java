@@ -1,5 +1,6 @@
 package com.jee.bean;
 
+import com.jee.models.Country;
 
 public class CounrtyBean {
     private String id;
@@ -8,6 +9,11 @@ public class CounrtyBean {
     public CounrtyBean(String id, String name) {
         this.id = id;
         this.name = name;
+    }
+    
+    public CounrtyBean(Country country) {
+    	this.id = country.getId();
+    	this.name = country.getName();
     }
 
     public CounrtyBean() {

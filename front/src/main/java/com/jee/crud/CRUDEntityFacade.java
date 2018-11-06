@@ -148,12 +148,13 @@ public class CRUDEntityFacade<T> implements IEntityFacade<T> {
         try {
             System.out.println("Custom Search started");
             Query query = em.createQuery(queryString);
-            System.out.println(query);
+            
             if(queryParameters != null && !queryParameters.isEmpty()) {
                 for(Map.Entry<String, T> entry : queryParameters.entrySet()) {
                     query.setParameter(entry.getKey(), entry.getValue());
                 }
             }
+            System.out.println(query);
             entities = query.getResultList();
             System.out.println("Custom Search succeeded");
         } catch (PersistenceException e) {

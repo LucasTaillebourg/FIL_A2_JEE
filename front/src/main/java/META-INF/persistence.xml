@@ -7,6 +7,7 @@
 			<class>com.jee.models.Measure</class>
 			<class>com.jee.models.Sensor</class>
 			<class>com.jee.models.User</class>
+			<class>com.jee.models.Alerte</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.url"

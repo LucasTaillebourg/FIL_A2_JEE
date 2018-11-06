@@ -2,8 +2,15 @@ package com.jee.models;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.jee.crud.CRUDEntityFacade;
+import com.jee.crud.facade.IEntityFacade;
+
 import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -22,6 +29,19 @@ public class Sensor implements Serializable {
 	private BigDecimal latitude;
 
 	private BigDecimal longitude;
+	
+	@Transient
+	private IEntityFacade crudEntityFacade = new CRUDEntityFacade<>();
+	
+	/**
+	 * fetch all sensors from data base
+	 * @return sensors
+	 */
+	public Collection findAllSensors (){
+        Map<String, String> queryParameters = new HashMap<>();
+        String query = "select s from Sensor s";
+        return crudEntityFacade.customSearch(query,null);
+    }
 
 	//bi-directional many-to-one association to Measure
 	@OneToMany(mappedBy="sensor")
