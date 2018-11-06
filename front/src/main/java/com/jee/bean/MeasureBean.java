@@ -2,6 +2,7 @@ package com.jee.bean;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class MeasureBean {
     private SensorBean sensor;
@@ -51,6 +52,11 @@ public class MeasureBean {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyy HH:mm:ss");
         return date.format(formatter);
+    }
+    public String getDateDiff() {
+
+    	long minutes = ChronoUnit.MINUTES.between(date, LocalDateTime.now());
+ return minutes +" min";
     }
 
     public void setDate(LocalDateTime date) {

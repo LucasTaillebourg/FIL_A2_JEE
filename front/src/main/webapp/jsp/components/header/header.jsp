@@ -20,7 +20,7 @@
 		<ul class="nav pull-right top-menu">
 
 			<!-- alert notification start-->
-			<jsp:include page="alert-notif-bell.jsp" />
+<%-- 			<jsp:include page="alert-notif-bell.jsp" /> --%>
 			<!-- alert notification end-->
 			<!-- user login dropdown start-->
 			<jsp:include page="login-dropdown.jsp" />
