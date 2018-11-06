@@ -5,7 +5,7 @@
 <t:template>
 
 	<jsp:body>
-      <jsp:include page="../components/tableauParamAlerte/TableauParamAlerte.jsp"/>
+      <jsp:include page="../components/historique/formulaire.jsp"/>
 
     </jsp:body>
 </t:template>

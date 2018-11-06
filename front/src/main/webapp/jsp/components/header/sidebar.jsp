@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String urlFlags = request.getContextPath() + "/flags";
-    String urlHistoric = request.getContextPath() + "/historic";
+    String urlHistoric = request.getContextPath() + "/historique";
     String urlConf = request.getContextPath() + "/parametreAlertes";
 
 
