@@ -1,6 +1,5 @@
 package com.jee.servlet;
 
-import com.jee.bean.CityBean;
 import com.jee.bean.MeasureBean;
 import com.jee.bean.Nature;
 import com.jee.bean.SensorBean;

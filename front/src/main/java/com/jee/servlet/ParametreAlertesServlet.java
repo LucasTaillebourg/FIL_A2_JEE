@@ -1,10 +1,6 @@
 package com.jee.servlet;
 
-import com.jee.bean.MeasureBean;
-import com.jee.bean.Nature;
-import com.jee.bean.SensorBean;
 import com.jee.bean.alertes.AlerteBean;
-import com.jee.bean.alertes.Warnings;
 import com.jee.models.Alerte;
 import com.jee.models.Measure;
 
@@ -15,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;

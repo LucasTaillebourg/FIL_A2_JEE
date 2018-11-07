@@ -22,7 +22,7 @@ public class AlerteBean {
 	}
 
 	public AlerteBean() {
-		// TODO Auto-generated constructor stub
+        //do-nothing
 	}
 
 	public String getIntitule() {

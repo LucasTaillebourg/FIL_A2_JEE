@@ -1,8 +1,5 @@
 package com.jee.servlet;
 
-import com.jee.bean.SensorBean;
-import com.jee.bean.alertes.AlerteBean;
-import com.jee.models.User;
 import com.jee.services.LoggerService;
 
 import javax.servlet.RequestDispatcher;
@@ -13,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {

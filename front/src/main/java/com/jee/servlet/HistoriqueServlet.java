@@ -32,6 +32,8 @@ public class HistoriqueServlet extends HttpServlet {
 
         LoggerService.verifyLogState(request, reponse, getServletContext());
 
+
+
         //TODO FER DAI TRUKS
 
         requestDispatcher = request.getRequestDispatcher("/jsp/pages/historique.jsp");

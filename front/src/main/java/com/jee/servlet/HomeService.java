@@ -1,18 +1,16 @@
 package com.jee.servlet;
 
-import java.io.IOException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.jee.bean.MeasureBean;
+import com.jee.bean.SensorBean;
+import com.jee.bean.alertes.AlerteBean;
+import com.jee.bean.alertes.Warnings;
+import com.jee.models.Alerte;
+import com.jee.models.Measure;
+import com.jee.models.Sensor;
+import com.jee.services.LoggerService;
 
 import javax.json.Json;
-import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
-import javax.json.JsonBuilderFactory;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,20 +18,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-import org.apache.taglibs.standard.lang.jstl.test.beans.Factory;
-
-import com.jee.bean.CityBean;
-import com.jee.bean.MeasureBean;
-import com.jee.bean.Nature;
-import com.jee.bean.SensorBean;
-import com.jee.bean.alertes.AlerteBean;
-import com.jee.bean.alertes.Warnings;
-import com.jee.models.Alerte;
-import com.jee.models.Measure;
-import com.jee.models.Sensor;
 //import com.jee.services.LoggerService;
-import com.jee.services.LoggerService;
 
 @WebServlet("/home")
 public class HomeService extends HttpServlet {
