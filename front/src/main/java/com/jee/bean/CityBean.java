@@ -48,10 +48,6 @@ public class CityBean {
 
     @Override
     public String toString() {
-        return "CityBean{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", country=" + country +
-                '}';
+        return name + "( " + country + " )";
     }
 }
