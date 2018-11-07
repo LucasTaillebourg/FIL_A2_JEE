@@ -30,7 +30,7 @@
             <li>
                 <a class="" href="<%=urlConf%>">
                     <i class="icon_genius"></i>
-                    <span>Configuration Alertes</span>
+                    <span>Configuration </span>
                 </a>
             </li>
 

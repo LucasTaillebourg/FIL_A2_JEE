@@ -21,8 +21,13 @@ $(document).ready(function() {
         ]
 
     };
+    
+    new Chart(document.getElementById("hist-graph").getContext("2d") , {
+        type: "line",
+        data: lineChartData, 
+    });
 
-    new Chart(document.getElementById("hist-graph").getContext("2d")).Line(lineChartData);
+   
 
 
 

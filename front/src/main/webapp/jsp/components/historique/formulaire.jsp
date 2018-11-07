@@ -1,6 +1,5 @@
 
-<script
-	src="<%=request.getContextPath()%>/resources/js/bootstrap-datepicker.js"></script>
+
 <div class="row">
 	<div class="col-lg-12">
 		<section class="panel">

@@ -11,7 +11,7 @@
 	</div>
 
 	<!--logo start-->
-	<a href="<%=request.getContextPath()%>/home" class="logo"><span class="lite">Consultation des capteur Veolia - Nantes</span></a>
+	<a href="<%=request.getContextPath()%>/home" class="logo"><span class="lite">${param.pageName}</span></a>
 	<!--logo end-->
 
 
@@ -19,13 +19,9 @@
 		<!-- notificatoin dropdown start-->
 		<ul class="nav pull-right top-menu">
 
-			<!-- alert notification start-->
-<%-- 			<jsp:include page="alert-notif-bell.jsp" /> --%>
-			<!-- alert notification end-->
-			<!-- user login dropdown start-->
-			<jsp:include page="login-dropdown.jsp" />
+	
 			<!-- user login dropdown end -->
-			<li><a href="<%=request.getContextPath()%>/logout"><i class="icon_key_alt"></i> Deconnexion</a> </li>
+			<li><a href="<%=request.getContextPath()%>/logout"> Retour a l'intranet</a> </li>
 		</ul>
 		<!-- notificatoin dropdown end-->
 	</div>
