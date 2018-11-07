@@ -16,7 +16,7 @@
             <li class="active">
                 <a class="" href="<%=urlFlags%>">
                     <i class="icon_target"></i>
-                    <span>Flags</span>
+                    <span>Alertes</span>
                 </a>
             </li>
 
@@ -30,7 +30,7 @@
             <li>
                 <a class="" href="<%=urlConf%>">
                     <i class="icon_genius"></i>
-                    <span>Configuration</span>
+                    <span>Configuration Alertes</span>
                 </a>
             </li>
 

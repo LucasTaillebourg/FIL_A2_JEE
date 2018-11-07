@@ -7,7 +7,7 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th>Gravitée</th>
+							<th>Gravitee</th>
 							<th><i class="icon_calendar"></i> Date</th>
 							<th><i class="icon_pin_alt"></i> Capteur</th>
 							<th>Alerte</th>
@@ -20,7 +20,7 @@
 							<tr>
 								<td>${warning.alerte.gravite}</td>
 								<td>${warning.mesure.dateToString}</td>
-								<td>${warning.mesure.sensor.city}-
+								<td>${warning.mesure.sensor.city.name}- capteur 
 									${warning.mesure.sensor.id}</td>
 								<td>${warning.mesure.nature}${warning.alerte.operator}
 									${warning.mesure.value}</td>

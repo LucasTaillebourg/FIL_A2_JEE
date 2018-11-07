@@ -1,8 +1,11 @@
 package com.jee.bean;
 
+import java.security.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+
+import com.jee.models.Measure;
 
 public class MeasureBean {
     private SensorBean sensor;
@@ -16,6 +19,13 @@ public class MeasureBean {
         this.nature = nature;
         this.value = value;
         this.date = date;
+    }
+    
+    public MeasureBean(Measure measure) {
+    	this.sensor = new SensorBean(measure.getSensor());
+    	this.nature = Nature.valueOf(measure.getNature());
+    	this.value = Float.valueOf(Double.toString(measure.getValue()));
+    	this.date = measure.getDate().toLocalDateTime();
     }
 
     public MeasureBean() {

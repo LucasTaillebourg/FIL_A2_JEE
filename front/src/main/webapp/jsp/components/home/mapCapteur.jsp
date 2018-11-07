@@ -36,9 +36,9 @@
 					map.getProjectionObject() // to Spherical Mercator Projection
 					);
 			markers.addMarker(new OpenLayers.Marker(lonLat));
+			map.setCenter(lonLat,15);
 		});
 		map.addLayer(markers);
-		map.zoomToMaxExtent();
 	</script>
 	</div>
 </body>

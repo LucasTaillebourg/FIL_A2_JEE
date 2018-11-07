@@ -106,7 +106,7 @@ public class HomeService extends HttpServlet {
 				measure = (Measure) itMeasure.next();
 				SensorBean sensorBean = new SensorBean(measure.getSensor());
 				warnings.add(new Warnings(alerteBean,
-						new MeasureBean(sensorBean, Nature.TEMPERATURE, (float) 30.5, LocalDateTime.now())));
+						new MeasureBean(measure)));
 			}
 
 		}
