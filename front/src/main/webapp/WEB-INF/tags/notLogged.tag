@@ -10,33 +10,6 @@
 <link rel="shortcut icon" href="img/favicon.png">
 
 <title>Veolia - Consultation de capteurs</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
-		<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-
-
-<!-- gritter -->
-
-<!-- custom gritter script for this page only-->
-<script src="${pageContext.request.contextPath}/resources/js/gritter.js"
-	type="text/javascript"></script>
-<!--custome script for all page-->
-<script src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
-
-<!--     Graphiques -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
@@ -54,9 +27,8 @@
 	href="${pageContext.request.contextPath}/resources/css/elegant-icons-style.css"
 	rel="stylesheet" />
 <link
-	href="${pageContext.request.contextPath}/resources/css/line-icons.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"
 	rel="stylesheet" />
-
 <!-- Custom styles -->
 
 
@@ -70,7 +42,7 @@
 
 </head>
 <header>
-	<jsp:include page="../../jsp/components/header/header.jsp">
+	<jsp:include page="../../jsp/components/header/notLoggedHeader.jsp">
 		<jsp:param name="pageName" value="Page des parametres des alertes" />
 	</jsp:include>
 </header>
@@ -78,7 +50,7 @@
 <body>
 
 	<section id="container" class="">
-		<jsp:include page="../../jsp/components/header/sidebar.jsp"></jsp:include>
+	
 		<section id="main-content">
 			<section class="wrapper">
 				<jsp:doBody />
@@ -94,8 +66,27 @@
 
 
 
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+	
+	<!-- gritter -->
 
+	<!-- custom gritter script for this page only-->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/gritter.js"
+		type="text/javascript"></script>
+	<!--custome script for all page-->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
 
+	<!--     Graphiques -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/chartjs-custom.js"></script>
 
 
 </body>
