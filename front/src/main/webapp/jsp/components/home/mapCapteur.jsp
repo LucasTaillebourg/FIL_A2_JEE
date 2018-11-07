@@ -63,7 +63,9 @@ closer.onclick = function() {
 	    
 	    
 		sensors.forEach(function(sensor) {
-			addMarker(sensor.lon, sensor.lat, 'Capteur ' + sensor.id);
+			addMarker(sensor.lon, sensor.lat, 'Capteur '+sensor.id + "</br>"
+			+"Temperature moyenne : 25 </br>"
+			+" Pression Moyenne : 10 </br> Vent: 5km/h </br> ouest </br><a> detail</a>");
 		});
 
 	       // create the map

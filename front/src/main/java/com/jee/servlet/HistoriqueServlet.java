@@ -34,8 +34,6 @@ public class HistoriqueServlet extends HttpServlet {
 
 
 
-        //TODO FER DAI TRUKS
-
         requestDispatcher = request.getRequestDispatcher("/jsp/pages/historique.jsp");
 
         requestDispatcher.include(request, reponse) ;

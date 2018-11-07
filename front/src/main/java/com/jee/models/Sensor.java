@@ -30,6 +30,8 @@ public class Sensor implements Serializable {
 
 	private BigDecimal longitude;
 	
+	
+	
 	@Transient
 	private IEntityFacade crudEntityFacade = new CRUDEntityFacade<>();
 	
@@ -106,6 +108,10 @@ public class Sensor implements Serializable {
 
 	public void setCity(City city) {
 		this.city = city;
+	}
+	
+	public String getDetail() {
+		return "Temperature moyenne : 25, Pression Moyenne : 10, Vent: 5km/h, ouest"; 
 	}
 
 }
