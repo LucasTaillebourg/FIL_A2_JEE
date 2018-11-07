@@ -53,7 +53,7 @@ public class FlagServlet extends HttpServlet {
         while (it.hasNext()) {
         	alerte = (Alerte) it.next();
         	AlerteBean alerteBean = new AlerteBean(alerte.getIntitule(), alerte.getType(), alerte.getSeuil(), alerte.getOperande(), alerte.getGravite());
-            Collection mesures = measure.findAlertes(alerte, Timestamp.valueOf(LocalDateTime.now().minusHours(2)), Timestamp.valueOf(LocalDateTime.now()));
+            Collection mesures = measure.findAlertes(alerte, Timestamp.valueOf(LocalDateTime.now()));
             Iterator itMeasure = mesures.iterator();
             while (itMeasure.hasNext()) {
             	measure = (Measure) itMeasure.next();

@@ -66,6 +66,21 @@ public class Measure implements Serializable {
         //queryParameters.put("value", alerte.getSeuil());
         return crudEntityFacade.customSearch(query,queryParameters);
     }
+	
+	/**
+	 * fetch all Measures for
+	 * @param nature that start at
+	 * @param startDate and finish at
+	 * @param endDate
+	 * @return Measures
+	 */
+	public Collection findAlertes(Alerte alerte, Timestamp endDate){
+        Map<String, String> queryParameters = new HashMap<>();
+        String query = "select m from Measure m where m.nature = '"+ alerte.getType() +"' AND m.value "+ alerte.getOperande() +" '"+ alerte.getSeuil() +"' AND m.date <= '"+endDate.toString()+"'";
+        //queryParameters.put("nature", alerte.getType().toString());
+        //queryParameters.put("value", alerte.getSeuil());
+        return crudEntityFacade.customSearch(query,queryParameters);
+    }
 
 	
 	/*SELECT nature, date, value, sensor_id, id
