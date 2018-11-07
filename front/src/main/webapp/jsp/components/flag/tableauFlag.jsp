@@ -7,7 +7,7 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th>Gravitée</th>
+							<th>Gravite</th>
 							<th><i class="icon_calendar"></i> Date</th>
 							<th><i class="icon_pin_alt"></i> Capteur</th>
 							<th>Alerte</th>
