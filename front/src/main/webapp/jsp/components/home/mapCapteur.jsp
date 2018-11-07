@@ -11,35 +11,86 @@
 <html>
 <body>
 	<div class="content-size">
-		<div id="demoMap" style="height: 500px"></div>
-
+		<div id="map" class="map"></div>
+		    <div id="popup" class="ol-popup">
+      <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      <div id="popup-content"></div>
+    </div>
 	</div>
-	<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+	
+	<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
 
-	<script>
-		var sensors = ${sensors};
-		console.log(sensors);
-		map = new OpenLayers.Map("demoMap");
-		map.addLayer(new OpenLayers.Layer.OSM());
+<script>
+var sensors = ${sensors};
+	var layer = new ol.layer.Tile({
+        source: new ol.source.OSM()
+    });
+	var vectorSource = new ol.source.Vector();
+
+	    var vectorLayer = new ol.layer.Vector({
+		      source: vectorSource
+		     });
+
+	    
+	    
 		sensors.forEach(function(sensor) {
-			console.log(sensor);
-			
+			addMarker(sensor.lon, sensor.lat, 'Capteur ' + sensor.id);
 		});
-		var zoom = 16;
 
-		var markers = new OpenLayers.Layer.Markers("Markers");
+	       // create the map
+        var map = new ol.Map({
+            layers: [
+              new ol.layer.Tile({
+                  source: new ol.source.OSM()
+              }),
+              vectorLayer
+            ],
+            target: 'map',
+            view: new ol.View({
+                center: [0, 0],
+                zoom: 2
+            })
+        });
+
+
+
+        map.getView().fit(vectorSource.getExtent(), map.getSize());
 		
-		sensors.forEach(function(sensor) {
-			console.log(sensor);
-			var lonLat = new OpenLayers.LonLat(sensor.lon, sensor.lat)
-					.transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-					map.getProjectionObject() // to Spherical Mercator Projection
-					);
-			markers.addMarker(new OpenLayers.Marker(lonLat));
-			map.setCenter(lonLat,15);
-		});
-		map.addLayer(markers);
-	</script>
-	</div>
+
+		 function addMarker(lon, lat, libelle) {
+			    console.log(lat);
+			    console.log(lon);
+
+			   
+			    var iconFeature = new ol.Feature({
+			      geometry: new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326',
+			        'EPSG:3857')),
+			      name: libelle,
+			      population: 4000,
+			      rainfall: 500
+			    });
+
+			    iconFeature.setStyle(
+			    		  new ol.style.Style({
+			    		    image: new ol.style.Circle({
+			    		        fill: new ol.style.Fill({ color: [255,0,0,1] }),
+			    		        stroke: new ol.style.Stroke({ color: [0,0,0,1] }),
+			    		        radius: 5
+			    		    })
+			    		  })
+			    		);
+
+			    
+
+			    vectorSource.addFeature(iconFeature);
+
+
+	   
+
+			  }
+
+
+    </script>
 </body>
 </html>
