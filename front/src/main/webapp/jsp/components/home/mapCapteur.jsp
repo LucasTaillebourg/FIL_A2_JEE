@@ -12,9 +12,10 @@
 <body>
 	<div class="content-size">
 		<div id="map" class="map"></div>
-		    <div id="popup" class="ol-popup">
+    <div id="popup" class="ol-popup">
       <a href="#" id="popup-closer" class="ol-popup-closer"></a>
       <div id="popup-content"></div>
+    </div>
     </div>
 	</div>
 	
@@ -23,6 +24,33 @@
 
 <script>
 var sensors = ${sensors};
+
+var container = document.getElementById('popup');
+var content = document.getElementById('popup-content');
+var closer = document.getElementById('popup-closer');
+
+/**
+ * Create an overlay to anchor the popup to the map.
+ */
+var overlay = new ol.Overlay({
+  element: container,
+  autoPan: true,
+  autoPanAnimation: {
+    duration: 250
+  }
+});
+
+
+/**
+ * Add a click handler to hide the popup.
+ * @return {boolean} Don't follow the href.
+ */
+closer.onclick = function() {
+  overlay.setPosition(undefined);
+  closer.blur();
+  return false;
+};
+
 	var layer = new ol.layer.Tile({
         source: new ol.source.OSM()
     });
@@ -50,10 +78,29 @@ var sensors = ${sensors};
             view: new ol.View({
                 center: [0, 0],
                 zoom: 2
-            })
+            }),
+            overlays: [overlay]
         });
 
-
+        /**
+         * Add a click handler to the map to render the popup.
+         */
+        map.on('singleclick', function(evt) {
+            var f = map.forEachFeatureAtPixel(
+                    evt.pixel,
+                    function(ft, layer){return ft;}
+                );
+                if (f && f.get('type') == 'click') {
+                    var geometry = f.getGeometry();
+                    var coord = geometry.getCoordinates();
+                    
+                 
+                    
+                    content.innerHTML = '<p>'+f.get('desc')+'</p>';
+                overlay.setPosition(coord);
+                    
+                } else { overlay.setPosition(undefined); }
+        });
 
         map.getView().fit(vectorSource.getExtent(), map.getSize());
 		
@@ -66,9 +113,8 @@ var sensors = ${sensors};
 			    var iconFeature = new ol.Feature({
 			      geometry: new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326',
 			        'EPSG:3857')),
-			      name: libelle,
-			      population: 4000,
-			      rainfall: 500
+			      desc: libelle,
+			      type: 'click'
 			    });
 
 			    iconFeature.setStyle(
