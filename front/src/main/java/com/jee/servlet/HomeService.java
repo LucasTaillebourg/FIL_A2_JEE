@@ -51,23 +51,7 @@ public class HomeService extends HttpServlet {
 		LoggerService.verifyLogState(request, reponse, getServletContext());
 
 		List<SensorBean> sensorBeans = new ArrayList<>();
-		// TODO get la vrai liste des marker
 
-		SensorBean sensorBean1 = new SensorBean();
-		sensorBean1.setLat((float) 40.702147);
-		sensorBean1.setLon((float) -74.015794);
-
-		SensorBean sensorBean2 = new SensorBean();
-		sensorBean2.setLat((float) 40.711614);
-		sensorBean2.setLon((float) -74.012318);
-
-		SensorBean sensorBean3 = new SensorBean();
-		sensorBean3.setLat((float) 40.718217);
-		sensorBean3.setLon((float) -73.998284);
-
-		sensorBeans.add(sensorBean1);
-		sensorBeans.add(sensorBean2);
-		sensorBeans.add(sensorBean3);
 
 		StringBuilder mapApiUrl = new StringBuilder();
 
