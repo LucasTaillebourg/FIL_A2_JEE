@@ -101,7 +101,7 @@ closer.onclick = function() {
                     
                 } else { overlay.setPosition(undefined); }
         });
-
+        vectorLayer.setZIndex( 1001 ); 
         map.getView().fit(vectorSource.getExtent(), map.getSize());
 		
 
@@ -119,10 +119,9 @@ closer.onclick = function() {
 
 			    iconFeature.setStyle(
 			    		  new ol.style.Style({
-			    		    image: new ol.style.Circle({
-			    		        fill: new ol.style.Fill({ color: [255,0,0,1] }),
-			    		        stroke: new ol.style.Stroke({ color: [0,0,0,1] }),
-			    		        radius: 5
+			    		    image: new ol.style.Icon({
+			    		    	src: 'resources/img/icons/pin.png'
+			    		    	
 			    		    })
 			    		  })
 			    		);
@@ -130,7 +129,7 @@ closer.onclick = function() {
 			    
 
 			    vectorSource.addFeature(iconFeature);
-
+			    
 
 	   
 

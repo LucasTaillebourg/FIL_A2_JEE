@@ -50,19 +50,6 @@ public class HomeService extends HttpServlet {
 
 		LoggerService.verifyLogState(request, reponse, getServletContext());
 
-		List<SensorBean> sensorBeans = new ArrayList<>();
-
-
-		StringBuilder mapApiUrl = new StringBuilder();
-
-		mapApiUrl.append("https://maps.googleapis.com/maps/api/staticmap");
-		// TODO determiner au dessus de quoi on se place
-		mapApiUrl.append("?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap");
-
-		sensorBeans.forEach(sensorBean -> mapApiUrl.append("&markers=color:blue%7Clabel:S%7C")
-				.append(sensorBean.getLat()).append(",").append(sensorBean.getLon()));
-
-		mapApiUrl.append("&key=AIzaSyAi63CLYJ_yEODZcRLLvWyixDMDmEougdA"); // Ma clé perso, ne pas réutiliser - Lucas
 
 		// todo fetch dans la table
 		List<AlerteBean> alerteConf = new ArrayList<>();
@@ -113,7 +100,6 @@ public class HomeService extends HttpServlet {
 		request.setAttribute("warnings", warnings);
 		request.setAttribute("sensors", sensorsJson.build());
 
-		request.setAttribute("mapKey", mapApiUrl);
 		requestDispatcher = request.getRequestDispatcher("/jsp/pages/home.jsp");
 
 		requestDispatcher.include(request, reponse);
